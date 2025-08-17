@@ -41,7 +41,7 @@ export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
 		const path = url.pathname.replace(/^\/+/, '');
-		if (!path) return Response.redirect('https://github.com/justiniven', 302); // TODO: change url to project page
+		if (!path) return Response.redirect('https://github.com/justiniven/nav.ms', 302);
 
 		console.log(url.hostname);
 
@@ -66,7 +66,7 @@ export default {
 		// if short is not found redirect to project page
 		if (!short) {
 			console.log(`No short found in URL: ${url}`);
-			return Response.redirect('https://github.com/justiniven?msg=noShortFound', 302);
+			return Response.redirect('https://github.com/justiniven/nav.ms?msg=noShortFound', 302);
 		}
 
 		// if cloud is not found, look it up
@@ -84,7 +84,7 @@ export default {
 			shortObj = redirs['redirects'][redirs['alias'][short]];
 		} else {
 			console.log(`No redirect found for short='${short}'`);
-			return Response.redirect('https://github.com/justiniven?msg=noRedirectFound', 302);
+			return Response.redirect('https://github.com/justiniven/nav.ms?msg=noRedirectFound', 302);
 		}
 
 		const redirUrls = shortObj[cloud];
@@ -92,7 +92,7 @@ export default {
 		// check if cloud is in redirects
 		if (!redirUrls) {
 			console.log(`No redirect found for short='${short}', cloud='${cloud}'`);
-			return Response.redirect('https://github.com/justiniven?msg=noRedirectForCloud', 302);
+			return Response.redirect('https://github.com/justiniven/nav.ms?msg=noRedirectForCloud', 302);
 		}
 
 		// if tenant is not provided or only one URL exists, redirect to the first URL and ignore the tenant
