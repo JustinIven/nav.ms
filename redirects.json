@@ -1,0 +1,21 @@
+{
+    "redirects": {
+        "az": {
+            "_name": "Azure Portal",
+            "ww": ["https://portal.azure.com/", "https://portal.azure.com/{tenant}"],
+            "gcc": ["https://portal.azure.us/", "https://portal.azure.us/{tenant}"],
+            "dod": ["https://portal.azure.us/", "https://portal.azure.us/{tenant}"],
+            "cn": ["https://portal.azure.cn/", "https://portal.azure.cn/{tenant}"]
+        },
+        "admin": {
+            "_name": "Microsoft 365 Admin Center",
+            "ww": ["https://admin.microsoft.com/"],
+            "gcc": ["https://admin.microsoft.us/"],
+            "dod": ["https://admin.microsoft.mil/"],
+            "cn": ["https://admin.microsoft.cn/"]
+        }
+    },
+    "alias": {
+        "azure": "az"
+    }
+}
