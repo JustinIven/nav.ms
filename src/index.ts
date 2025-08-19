@@ -23,17 +23,26 @@ const cloudEnvs = {
 const redirs = redirects as any;
 
 async function lookupCloud(tenant: string | undefined): Promise<string> {
-	// Call the Microsoft federationprovider endpoint to learn the cloud for this tenant
+	// Call the Microsoft federationprovider endpoint to get the cloud environment for this tenant
 	if (!tenant) return cloudEnvs['Global'];
 
 	const url = new URL('https://odc.officeapps.live.com/odc/v2.1/federationprovider');
 	url.searchParams.set('domain', tenant);
-	const res = await fetch(url.toString(), { method: 'GET', signal: AbortSignal.timeout(300) });
+	const res = await fetch(url.toString(), { method: 'GET' });
 
 	if (!res.ok) return cloudEnvs['Global']; // Default to Global if lookup fails
 
 	const data = await res.json() as { environment?: string };
-	const envKey = data.environment as keyof typeof cloudEnvs | undefined;
+	const envStr = data.environment;
+	// If the federationprovider returns an environment we don't recognize, log it for debugging.
+	if (envStr && !(envStr in cloudEnvs)) {
+		console.log({
+			error: 'Unknown cloud environment',
+			tenant: tenant,
+			environment: envStr
+		});
+	}
+	const envKey = envStr as keyof typeof cloudEnvs | undefined;
 	return envKey ? cloudEnvs[envKey] : cloudEnvs['Global'];
 }
 
@@ -42,8 +51,6 @@ export default {
 		const url = new URL(request.url);
 		const path = url.pathname.replace(/^\/+/, '');
 		if (!path) return Response.redirect('https://github.com/justiniven/nav.ms', 302);
-
-		console.log(url.hostname);
 
 		const domainElements = url.hostname.split('.');
 		const pathElements = path.split('/');
@@ -65,15 +72,8 @@ export default {
 
 		// if short is not found redirect to project page
 		if (!short) {
-			console.log(`No short found in URL: ${url}`);
+			// console.log(`No short found in URL: ${url}`);
 			return Response.redirect('https://github.com/justiniven/nav.ms?msg=noShortFound', 302);
-		}
-
-		// if cloud is not found, look it up
-		if (!cloud) {
-			console.log(`No cloud found in URL: ${url}`);
-			cloud = await lookupCloud(tenant);
-			console.log(`Detected cloud for tenant ${tenant}: ${cloud}`);
 		}
 
 		// lookup short in 
@@ -83,15 +83,22 @@ export default {
 		} else if (redirs['alias'][short]) {
 			shortObj = redirs['redirects'][redirs['alias'][short]];
 		} else {
-			console.log(`No redirect found for short='${short}'`);
+			// console.log(`No redirect found for short='${short}'`);
 			return Response.redirect('https://github.com/justiniven/nav.ms?msg=noRedirectFound', 302);
+		}
+
+		// if cloud is not found, look it up
+		if (!cloud) {
+			// console.log(`No cloud found in URL: ${url}`);
+			cloud = await lookupCloud(tenant);
+			// console.log(`Detected cloud for tenant ${tenant}: ${cloud}`);
 		}
 
 		const redirUrls = shortObj[cloud];
 
 		// check if cloud is in redirects
 		if (!redirUrls) {
-			console.log(`No redirect found for short='${short}', cloud='${cloud}'`);
+			// console.log(`No redirect found for short='${short}', cloud='${cloud}'`);
 			return Response.redirect('https://github.com/justiniven/nav.ms?msg=noRedirectForCloud', 302);
 		}
 
