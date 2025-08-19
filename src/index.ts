@@ -22,17 +22,17 @@ const cloudEnvs = {
 
 const redirs = redirects as any;
 
-async function lookupCloud(tenant: string | undefined): Promise<string> {
+async function lookupCloud(tenant: string | undefined): Promise<{ cloudEnv: string; tenantId: string | undefined }> {
 	// Call the Microsoft federationprovider endpoint to get the cloud environment for this tenant
-	if (!tenant) return cloudEnvs['Global'];
+	if (!tenant) return { cloudEnv: cloudEnvs['Global'], tenantId: undefined };
 
 	const url = new URL('https://odc.officeapps.live.com/odc/v2.1/federationprovider');
 	url.searchParams.set('domain', tenant);
 	const res = await fetch(url.toString(), { method: 'GET' });
 
-	if (!res.ok) return cloudEnvs['Global']; // Default to Global if lookup fails
+	if (!res.ok) return { cloudEnv: cloudEnvs['Global'], tenantId: undefined }; // Default to Global if lookup fails
 
-	const data = await res.json() as { environment?: string };
+	const data = await res.json() as { environment?: string, tenantId?: string };
 	const envStr = data.environment;
 	// If the federationprovider returns an environment we don't recognize, log it for debugging.
 	if (envStr && !(envStr in cloudEnvs)) {
@@ -43,7 +43,7 @@ async function lookupCloud(tenant: string | undefined): Promise<string> {
 		});
 	}
 	const envKey = envStr as keyof typeof cloudEnvs | undefined;
-	return envKey ? cloudEnvs[envKey] : cloudEnvs['Global'];
+	return envKey ? { cloudEnv: cloudEnvs[envKey], tenantId: data.tenantId } : { cloudEnv: cloudEnvs['Global'], tenantId: data.tenantId };
 }
 
 export default {
@@ -59,6 +59,7 @@ export default {
 		let short: string | undefined;
 		let tenant: string | undefined;
 		let cloud: string | undefined;
+		let tenantId: string | undefined;
 
 		if (domainElements.length > 2) {
 			short = domainElements[0];
@@ -90,7 +91,9 @@ export default {
 		// if cloud is not found, look it up
 		if (!cloud) {
 			// console.log(`No cloud found in URL: ${url}`);
-			cloud = await lookupCloud(tenant);
+			const lookupResult = await lookupCloud(tenant);
+			cloud = lookupResult.cloudEnv;
+			tenantId = lookupResult.tenantId;
 			// console.log(`Detected cloud for tenant ${tenant}: ${cloud}`);
 		}
 
@@ -104,9 +107,30 @@ export default {
 
 		// if tenant is not provided or only one URL exists, redirect to the first URL and ignore the tenant
 		if (!tenant || redirUrls.length === 1) {
+			console.error(`1`);
 			return Response.redirect(redirUrls[0], 302);
-		} else {
-			return Response.redirect(redirUrls[1].replace('{tenant}', encodeURIComponent(tenant)), 302);
 		}
+
+		// check what format the redirect expects
+		if (redirUrls[1].includes('{tenant}')) {
+			return Response.redirect(redirUrls[1].replace('{tenant}', encodeURIComponent(tenant)), 302);
+		} else if (redirUrls[1].includes('{tenantId}')) {
+			// lookup tenant, if it previously wasn't required
+			if (!tenantId) {
+				const lookupResult = await lookupCloud(tenant);
+				tenantId = lookupResult.tenantId;
+			}
+
+			// if tenantId is still undefined, redirect to the first URL
+			if (!tenantId) {
+				return Response.redirect(redirUrls[0], 302);
+			}
+
+			return Response.redirect(redirUrls[1].replace('{tenantId}', encodeURIComponent(tenantId)), 302)
+		} else {
+			console.log(`2`);
+			return Response.redirect(redirUrls[0], 302);
+		}
+
 	},
 } satisfies ExportedHandler<Env>;
