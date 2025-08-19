@@ -53,7 +53,7 @@ export default {
 		let tenant: string | undefined;
 		let cloud: string | undefined;
 
-		if (domainElements.length > 4) {
+		if (domainElements.length > 2) {
 			short = domainElements[0];
 			tenant = pathElements[0];
 			cloud = pathElements[1];
