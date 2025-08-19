@@ -1,21 +1,84 @@
 {
     "redirects": {
-        "az": {
+        "azure": {
             "_name": "Azure Portal",
-            "ww": ["https://portal.azure.com/", "https://portal.azure.com/{tenant}"],
-            "gcc": ["https://portal.azure.us/", "https://portal.azure.us/{tenant}"],
-            "dod": ["https://portal.azure.us/", "https://portal.azure.us/{tenant}"],
-            "cn": ["https://portal.azure.cn/", "https://portal.azure.cn/{tenant}"]
+            "ww": ["https://portal.azure.com", "https://portal.azure.com/{tenant}"],
+            "gcc": ["https://portal.azure.us", "https://portal.azure.us/{tenant}"],
+            "dod": ["https://portal.azure.us", "https://portal.azure.us/{tenant}"],
+            "cn": ["https://portal.azure.cn", "https://portal.azure.cn/{tenant}"]
         },
         "admin": {
-            "_name": "Microsoft 365 Admin Center",
-            "ww": ["https://admin.microsoft.com/"],
-            "gcc": ["https://admin.microsoft.us/"],
-            "dod": ["https://admin.microsoft.mil/"],
-            "cn": ["https://admin.microsoft.cn/"]
+            "_name": "Microsoft 365 admin center",
+            "ww": ["https://admin.cloud.microsoft", "https://admin.cloud.microsoft/Partner/BeginClientSession.aspx?CTID={tenantId}&CSDEST=o365admincenter"],
+            "gcc": ["https://portal.office365.us"],
+            "dod": ["https://portal.apps.mil"],
+            "cn": ["https://portal.partner.microsoftonline.cn/AdminPortal"]
+        },
+        "entra": {
+            "_name": "Microsoft Entra admin center",
+            "ww": ["https://entra.microsoft.com", "https://entra.microsoft.com/{tenant}"],
+            "gcc": ["https://entra.microsoft.us", "https://entra.microsoft.us/{tenant}"],
+            "dod": ["https://entra.microsoft.us", "https://entra.microsoft.us/{tenant}"],
+            "cn": ["https://entra.microsoftonline.cn", "https://entra.microsoftonline.cn/{tenant}"]
+        },
+        "intune": {
+            "_name": "Microsoft Intune admin center",
+            "ww": ["https://intune.microsoft.com", "https://intune.microsoft.com/{tenant}"],
+            "gcc": ["https://intune.microsoft.us", "https://intune.microsoft.us/{tenant}"],
+            "dod": ["https://intune.microsoft.us", "https://intune.microsoft.us/{tenant}"],
+            "cn": ["https://intune.microsoftonline.cn", "https://intune.microsoftonline.cn/{tenant}"]
+        },
+        "defender": {
+            "_name": "Microsoft Defender",
+            "ww": ["https://security.microsoft.com", "https://security.microsoft.com/?tid={tenant}"],
+            "gcc": ["https://security.microsoft.us"],
+            "dod": ["https://security.apps.mil/?rfr=AdminCenter"],
+            "cn": ["https://security.microsoftonline.cn"]
+        },
+        "exchange": {
+            "_name": "Exchange admin center",
+            "ww": ["https://admin.cloud.microsoft/exchange", "https://admin.cloud.microsoft/exchange?delegatedOrg={tenant}"],
+            "gcc": ["https://admin.exchange.office365.us"],
+            "dod": ["https://admin.exchange.office365.us"],
+            "cn": ["https://admin.exchange.microsoftonline.cn"]
+        },
+        "sharepoint": {
+            "_name": "SharePoint admin center",
+            "ww": ["https://admin.microsoft.com/sharepoint", "https://admin.microsoft.com/Partner/BeginClientSession.aspx?CTID={tenantId}&CSDEST=SharePoint"],
+            "gcc": ["https://portal.office365.us/sharepoint"],
+            "dod": ["https://portal.apps.mil/SharePoint"]
+        },
+        "teams": {
+            "_name": "Microsoft Teams admin center",
+            "ww": ["https://admin.teams.microsoft.com/", "https://admin.teams.microsoft.com/?delegatedOrg={tenant}"],
+            "gcc": ["https://admin.gov.teams.microsoft.us/"],
+            "dod": ["https://admin.dod.teams.microsoft.us/"],
+            "cn": ["https://admin.teams.microsoftonline.cn/"]
+        },
+        "onedrive": {
+            "_name": "OneDrive admin center",
+            "ww": ["https://admin.onedrive.microsoft.com/", "https://admin.onedrive.microsoft.com/?delegatedOrg={tenant}"],
+            "gcc": ["https://admin.gov.onedrive.microsoft.us/"],
+            "dod": ["https://admin.dod.onedrive.microsoft.us/"],
+            "cn": ["https://admin.onedrive.microsoftonline.cn/"]
+        },
+        "partner": {
+            "_name": "Microsoft Partner Center",
+            "ww": ["https://partner.microsoft.com/dashboard", "https://partner.microsoft.com/dashboard/account/select?accountid=0&aadtenantid={tenant}&signinreturnpath=/dashboard"]
         }
     },
     "alias": {
-        "azure": "az"
+        "az": "azure",
+        "ad": "entra",
+        "en": "entra",
+        "aad": "entra",
+        "in": "intune",
+        "endpoint": "intune",
+        "def": "defender",
+        "security": "defender",
+        "exo": "exchange",
+        "ex": "exchange",
+        "team": "teams",
+        "one": "onedrive"
     }
 }
