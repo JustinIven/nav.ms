@@ -62,13 +62,13 @@ export default {
 		let tenantId: string | undefined;
 
 		if (domainElements.length > 2) {
-			short = domainElements[0];
-			tenant = pathElements[0];
-			cloud = pathElements[1];
+			short = domainElements[0].toLowerCase();
+			tenant = pathElements[0].toLowerCase();
+			cloud = pathElements[1].toLowerCase();
 		} else {
-			short = pathElements[0];
-			tenant = pathElements[1];
-			cloud = pathElements[2];
+			short = pathElements[0].toLowerCase();
+			tenant = pathElements[1].toLowerCase();
+			cloud = pathElements[2].toLowerCase();
 		}
 
 		// if short is not found redirect to project page
@@ -128,7 +128,6 @@ export default {
 
 			return Response.redirect(redirUrls[1].replace('{tenantId}', encodeURIComponent(tenantId)), 302)
 		} else {
-			console.log(`2`);
 			return Response.redirect(redirUrls[0], 302);
 		}
 
