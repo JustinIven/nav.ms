@@ -2,10 +2,83 @@
     "redirects": {
         "azure": {
             "_name": "Azure Portal",
-            "ww": ["https://portal.azure.com", "https://portal.azure.com/{tenant}"],
-            "gcc": ["https://portal.azure.us", "https://portal.azure.us/{tenant}"],
-            "dod": ["https://portal.azure.us", "https://portal.azure.us/{tenant}"],
-            "cn": ["https://portal.azure.cn", "https://portal.azure.cn/{tenant}"]
+            "ww": ["https://portal.azure.com/{subpage}", "https://portal.azure.com/{tenant}{subpage}"],
+            "gcc": ["https://portal.azure.us/{subpage}", "https://portal.azure.us/{tenant}{subpage}"],
+            "dod": ["https://portal.azure.us/{subpage}", "https://portal.azure.us/{tenant}{subpage}"],
+            "cn": ["https://portal.azure.cn/{subpage}", "https://portal.azure.cn/{tenant}{subpage}"],
+            "subpage": {
+                "ad": "#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/Overview?",
+                "sentinel": "#blade/Microsoft_Azure_Security_Insights/WorkspaceSelectorBlade?",
+                "automanage": "#view/Microsoft_Azure_AutoManagedVirtualMachines/AutomanageMenuBlade",
+                "avd": "#view/Microsoft_Azure_WVD/WvdManagerMenuBlade/~/overview",
+                "auto": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Automation%2FAutomationAccounts",
+                "fn": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp",
+                "cosmos": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.DocumentDb%2FdatabaseAccounts",
+                "monitor": "#view/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/~/overview",
+                "appinsights": "#view/HubsExtension/BrowseResource/resourceType/microsoft.insights%2Fcomponents",
+                "loganalytics": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.OperationalInsights%2Fworkspaces",
+                "asp": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2FserverFarms",
+                "apps": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites",
+                "sql": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fservers",
+                "sqldb": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fservers%2Fdatabases",
+                "sqlep": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fservers%2Felasticpools",
+                "sqlmi": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2FmanagedInstances",
+                "cost": "#view/Microsoft_Azure_GTM/ModernBillingMenuBlade/~/BillingAccounts",
+                "carbon": "#view/HubsExtension/AssetMenuBlade/~/EmissionTrendsId/assetName/Sustainability/extensionName/Microsoft_Azure_Sustainability",
+                "lb": "#view/Microsoft_Azure_Network/LoadBalancingHubMenuBlade/~/overview",
+                "sa": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts",
+                "disks": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2Fdisks",
+                "vn": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Network%2FvirtualNetworks",
+                "defender": "#view/Microsoft_Azure_Security/SecurityMenuBlade/~/0",
+                "adf": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.DataFactory%2FdataFactories",
+                "help": "#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview",
+                "subs": "#view/Microsoft_Azure_Billing/SubscriptionsBlade?",
+                "rg": "#view/HubsExtension/BrowseResourceGroups?",
+                "nsg": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Network%2FNetworkSecurityGroups",
+                "kv": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.KeyVault%2Fvaults",
+                "vm": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines",
+                "aks": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.ContainerService%2FmanagedClusters",
+                "redis": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Cache%2FRedis",
+                "servicebus": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.ServiceBus%2Fnamespaces",
+                "appgw": "#view/Microsoft_Azure_Network/LoadBalancingHubMenuBlade/~/applicationgateways",
+                "waf": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Network%2FFrontDoorWebApplicationFirewallPolicies",
+                "hybridcompute": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.HybridCompute%2Fmachines",
+                "ssh": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FsshPublicKeys",
+                "dcr": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Insights%2FdataCollectionRules",
+                "acr": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.ContainerRegistry%2Fregistries",
+                "container": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.ContainerInstance%2FcontainerGroups",
+                "policy": "#view/Microsoft_Azure_Policy/PolicyMenuBlade/~/overview",
+                "shell": "#cloudshell/",
+                "fwmg": "#view/Microsoft_Azure_HybridNetworking/FirewallManagerMenuBlade",
+                "pip": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Network%2FPublicIpAddresses",
+                "mg": "#view/Microsoft_Azure_ManagementGroups/ManagementGroupBrowseBlade?",
+                "umc": "#view/Microsoft_Azure_Automation/UpdateCenterMenuBlade/~/overview?",
+                "backup": "#view/Microsoft_Azure_DataProtection/BackupCenterMenuBlade/~/overview",
+                "rm": "#view/Microsoft_Azure_Resources/ResourceManagerBlade/~/overview",
+                "guestconfig": "#browse/Microsoft.Compute%2FvirtualMachines%2Fproviders%2FguestConfigurationAssignments",
+                "apim": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.ApiManagement%2Fservice?",
+                "fdcdn": "#view/HubsExtension/BrowseResource/resourceType/microsoft.cdn%2Fprofiles?",
+                "mi": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.ManagedIdentity%2FuserAssignedIdentities?",
+                "health": "#view/Microsoft_Azure_Health/ServiceIssuesBlade?",
+                "create": "#create/hub?",
+                "nwatch": "#view/Microsoft_Azure_Network/NetworkWatcherMenuBlade/~/overview?",
+                "advisor": "#view/Microsoft_Azure_Expert/AdvisorMenuBlade/~/score?",
+                "vmas": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FavailabilitySets?",
+                "vmss": "#view/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Compute%2FvirtualMachineScaleSets?",
+                "pg": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.DBforPostgreSQL%2Fservers?",
+                "pgfs": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.DBforPostgreSQL%2FflexibleServers?",
+                "pgh": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.DBforPostgreSQL%2FserverGroupsv2?",
+                "pgaa": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.AzureArcData%2FpostgresInstances?",
+                "databricks": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Databricks%2Fworkspaces?",
+                "synapse": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Synapse%2Fworkspaces?",
+                "temp": "#view/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems?",
+                "sd": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Portal%2Fdashboards?",
+                "logic": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Logic%2Fworkflows",
+                "pim": "#view/Microsoft_Azure_PIMCommon/CommonMenuBlade/~/azurerbac",
+                "wb": "?feature.msaljs=true#view/HubsExtension/BrowseResource/resourceType/microsoft.insights%2Fworkbooks",
+                "routes": "#view/HubsExtension/BrowseResource/resourceType/Microsoft.Network%2FrouteTables",
+                "dns": "#browse/Microsoft.Network%2FdnsZones"
+            }
         },
         "admin": {
             "_name": "Microsoft 365 admin center",
@@ -16,10 +89,50 @@
         },
         "entra": {
             "_name": "Microsoft Entra admin center",
-            "ww": ["https://entra.microsoft.com", "https://entra.microsoft.com/{tenant}"],
-            "gcc": ["https://entra.microsoft.us", "https://entra.microsoft.us/{tenant}"],
-            "dod": ["https://entra.microsoft.us", "https://entra.microsoft.us/{tenant}"],
-            "cn": ["https://entra.microsoftonline.cn", "https://entra.microsoftonline.cn/{tenant}"]
+            "ww": ["https://entra.microsoft.com/{subpage}", "https://entra.microsoft.com/{tenant}{subpage}"],
+            "gcc": ["https://entra.microsoft.us/{subpage}", "https://entra.microsoft.us/{tenant}{subpage}"],
+            "dod": ["https://entra.microsoft.us/{subpage}", "https://entra.microsoft.us/{tenant}{subpage}"],
+            "cn": ["https://entra.microsoftonline.cn/{subpage}", "https://entra.microsoftonline.cn/{tenant}{subpage}"],
+            "subpage": {
+                "appreg": "#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType~/null/sourceType/Microsoft_AAD_IAM",
+                "apps": "#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AppAppsPreview",
+                "groups": "#view/Microsoft_AAD_IAM/GroupsManagementMenuBlade/~/AllGroups/menuId/AllGroups",
+                "users": "#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/AllUsers",
+                "devices": "#view/Microsoft_AAD_Devices/DevicesMenuBlade/~/Devices/menuId/Devices",
+                "devicesettings": "#view/Microsoft_AAD_Devices/DevicesMenuBlade/~/DeviceSettings/menuId/Devices/Microsoft_AAD_Devices/DevicesMenuBlade",
+                "guests": "#view/Microsoft_AAD_IAM/CompanyRelationshipsMenuBlade/~/Settings/menuId/ExternalIdentitiesGettingStarted",
+                "ca": "#view/Microsoft_AAD_ConditionalAccess/ConditionalAccessBlade/~/Policies?",
+                "ctas": "#view/Microsoft_AAD_IAM/CompanyRelationshipsMenuBlade/~/CrossTenantAccessSettings/menuId/CrossTenantAccessSettings",
+                "adfslog": "#view/Microsoft_Azure_ADHybridHealth/AadHealthMenuBlade/~/AdfsServicesList",
+                "auth": "#view/Microsoft_AAD_IAM/AuthenticationMethodsMenuBlade/~/AdminAuthMethods",
+                "consent": "#view/Microsoft_AAD_IAM/ConsentPoliciesMenuBlade/~/UserSettings",
+                "usrsettings": "#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/UserSettings/menuId/UserSettings",
+                "pumfa": "#view/Microsoft_AAD_IAM/MultifactorAuthenticationConfig.ReactView/tabId/users",
+                "license": "#view/Microsoft_AAD_IAM/LicensesMenuBlade/~/Products",
+                "new": "#blade/Microsoft_AAD_IAM/ChangeManagementHubList.ReactView?",
+                "sign": "#view/Microsoft_AAD_IAM/SignInEventsV3Blade/timeRangeType/last24hours/showApplicationSignIns~/true",
+                "mfaunblock": "#view/Microsoft_AAD_IAM/MultifactorAuthenticationMenuBlade/~/BlockedUsers/fromProviders~/false",
+                "pim": "#view/Microsoft_Azure_PIMCommon/CommonMenuBlade/~/quickStart",
+                "pimr": "#view/Microsoft_Azure_PIMCommon/ActivationMenuBlade/~/aadmigratedroles?",
+                "pimg": "#view/Microsoft_Azure_PIMCommon/ActivationMenuBlade/~/aadgroup?",
+                "pimz": "#view/Microsoft_Azure_PIMCommon/ActivationMenuBlade/~/azurerbac?",
+                "ar": "#view/Microsoft_AAD_ERM/DashboardBlade/~/Controls",
+                "roles": "#view/Microsoft_AAD_IAM/RolesManagementMenuBlade/~/AllRoles",
+                "pa": "#view/Microsoft_AAD_IAM/RolesManagementMenuBlade/~/ProtectedActions",
+                "ac": "#view/Microsoft_AAD_ConditionalAccess/ConditionalAccessBlade/~/AuthenticationContext",
+                "score": "#view/Microsoft_AAD_IAM/SecurityMenuBlade/~/IdentitySecureScore/menuId/IdentitySecureScore",
+                "security": "#view/Microsoft_AAD_IAM/SecurityMenuBlade/~/GettingStarted/menuId/SecurityCenter",
+                "sspr": "#view/Microsoft_AAD_IAM/PasswordResetMenuBlade/~/Properties",
+                "support": "#view/Microsoft_Azure_Support/NewSupportRequestV3Blade/callerName/ActiveDirectory/issueType/technical",
+                "synclog": "#view/Microsoft_Azure_ADHybridHealth/AadHealthMenuBlade/~/SyncErros/Microsoft_Azure_ADHybridHealth/AadHealthMenuBlade",
+                "invite": "#view/Microsoft_AAD_IAM/UserCreateBlade/initialMode~/1/b2cEnabled~/false",
+                "elm": "#view/Microsoft_AAD_ERM/DashboardBlade/~/elmEntitlement",
+                "authstrength": "#view/Microsoft_AAD_IAM/AuthenticationMethodsMenuBlade/~/AuthStrengths/Microsoft_AAD_IAM/AuthenticationMethodsMenuBlade?",
+                "authactivity": "#view/Microsoft_AAD_IAM/AuthenticationMethodsMenuBlade/~/AuthMethodsActivity/Microsoft_AAD_IAM/AuthenticationMethodsMenuBlade?",
+                "idp": "#view/Microsoft_AAD_IAM/IdentityProtectionMenuBlade/~/Overview",
+                "laps": "#view/Microsoft_AAD_Devices/DevicesMenuBlade/~/LocalAdminPassword/menuId/Overview",
+                "cloudsync": "#view/Microsoft_AAD_Connect_Provisioning/CloudSyncMenuBlade/~/CloudSyncConfigurations"
+            }
         },
         "intune": {
             "_name": "Microsoft Intune admin center",
@@ -30,10 +143,51 @@
         },
         "defender": {
             "_name": "Microsoft Defender",
-            "ww": ["https://security.microsoft.com", "https://security.microsoft.com/?tid={tenant}"],
-            "gcc": ["https://security.microsoft.us"],
-            "dod": ["https://security.apps.mil/?rfr=AdminCenter"],
-            "cn": ["https://security.microsoftonline.cn"]
+            "ww": ["https://security.microsoft.com/{subpage}", "https://security.microsoft.com/{subpage}?tid={tenant}"],
+            "gcc": ["https://security.microsoft.us/{subpage}"],
+            "dod": ["https://security.apps.mil/{subpage}?rfr=AdminCenter"],
+            "cn": ["https://security.microsoftonline.cn/{subpage}"],
+            "subpage": {
+                "incidents": "incidents",
+                "hunting": "v2/advanced-hunting",
+                "actions": "action-center",
+                "explorer": "threatexplorer",
+                "re": "restrictedentities",
+                "investigations": "airinvestigation",
+                "ti": "intel-explorer?referrer=MDTI_STANDALONE_REDIRECT",
+                "qre": "quarantine",
+                "tallow": "tenantAllowBlockList",
+                "ss": "securescore",
+                "cacat": "cloudapps/app-catalog",
+                "caoauth": "cloudapps/oauth-apps",
+                "devices": "machines",
+                "users": "cloudapps/users-and-accounts",
+                "ast": "attacksimulator",
+                "astrep": "attacksimulationreport",
+                "ap": "antiphishing",
+                "dkim": "dkimv2",
+                "report": "securityreports",
+                "repquery": "advanced-hunting/quotareport",
+                "secreport": "reports",
+                "vulnreport": "mde-reports/vulnerability",
+                "asrreport": "asr",
+                "devcontrol": "devicecontrol",
+                "devhealth": "devicehealth",
+                "fwreport": "firewall",
+                "monsum": "value-report",
+                "webprotect": "webprotection",
+                "emailcoll": "emailandcollabreport",
+                "schedules": "ManageSubscription",
+                "dwnrep": "ReportsForDownload",
+                "mcasreports": "cloudapps/exported-reports",
+                "idrepmgmt": "identities-reports",
+                "tp": "threatpolicy",
+                "asp": "antispam",
+                "amp": "antimalwarev2",
+                "sap": "safeattachmentv2",
+                "slp": "safelinksv2",
+                "qp": "quarantinePolicies"
+            }
         },
         "exchange": {
             "_name": "Exchange admin center",
@@ -42,20 +196,20 @@
             "dod": ["https://admin.exchange.office365.us"],
             "cn": ["https://admin.exchange.microsoftonline.cn"]
         },
-        "sharepoint": {
+        "sharePoint": {
             "_name": "SharePoint admin center",
             "ww": ["https://admin.microsoft.com/sharepoint", "https://admin.microsoft.com/Partner/BeginClientSession.aspx?CTID={tenantId}&CSDEST=SharePoint"],
             "gcc": ["https://portal.office365.us/sharepoint"],
             "dod": ["https://portal.apps.mil/SharePoint"]
         },
-        "teams": {
+        "teamsadmin": {
             "_name": "Microsoft Teams admin center",
             "ww": ["https://admin.teams.microsoft.com/", "https://admin.teams.microsoft.com/?delegatedOrg={tenant}"],
             "gcc": ["https://admin.gov.teams.microsoft.us/"],
             "dod": ["https://admin.dod.teams.microsoft.us/"],
             "cn": ["https://admin.teams.microsoftonline.cn/"]
         },
-        "onedrive": {
+        "oneDrive": {
             "_name": "OneDrive admin center",
             "ww": ["https://admin.onedrive.microsoft.com/", "https://admin.onedrive.microsoft.com/?delegatedOrg={tenant}"],
             "gcc": ["https://admin.gov.onedrive.microsoft.us/"],
@@ -65,6 +219,183 @@
         "partner": {
             "_name": "Microsoft Partner Center",
             "ww": ["https://partner.microsoft.com/dashboard", "https://partner.microsoft.com/dashboard/account/select?accountid=0&aadtenantid={tenant}&signinreturnpath=/dashboard"]
+        },
+        "azurePreview": {
+            "_name": "Azure Preview Portal",
+            "ww": ["https://preview.portal.azure.com/", "https://preview.portal.azure.com/{tenant}"]
+        },
+        "powerBi": {
+            "_name": "Power BI",
+            "ww": ["https://app.powerbi.com/{subpage}"],
+            "gcc": ["https://app.high.powerbigov.us/{subpage}"],
+            "subpage": {
+                "admin": "admin-portal"
+            }
+        },
+        "powerPlatform": {
+            "_name": "Power Platform admin center",
+            "ww": ["https://admin.powerplatform.microsoft.com"],
+            "gcc": ["https://high.admin.powerplatform.microsoft.us"],
+            "dod": ["https://admin.appsplatform.us"]
+        },
+        "myAccess": {
+            "_name": "My access",
+            "ww": ["https://myaccess.microsoft.com/{subpage}"],
+            "subpage": {
+                "groups": "groups"
+            }
+        },
+        "myAccount": {
+            "_name": "My account",
+            "ww": ["https://myaccount.microsoft.com"]
+        },
+        "myApps": {
+            "_name": "My apps",
+            "ww": ["https://myapps.microsoft.com"]
+        },
+        "mySignIns": {
+            "_name": "My sign-ins",
+            "ww": ["https://mysignins.microsoft.com/{subpage}"],
+            "subpage": {
+                "securityinfo": "security-info"
+            }
+        },
+        "myStaff": {
+            "_name": "My staff",
+            "ww": ["https://mystaff.microsoft.com"]
+        },
+        "officePortal": {
+            "_name": "Office Portal",
+            "ww": ["https://portal.office.com/{subpage}"],
+            "subpage": {
+                "subscriptions": "account/#subscriptions"
+            }
+        },
+        "intuneeducation": {
+            "_name": "Intune for Education",
+            "ww": ["https://intuneeducation.portal.azure.com"]
+        },
+        "cosmos": {
+            "_name": "Azure Cosmos DB Explorer",
+            "ww": ["https://cosmos.azure.com"]
+        },
+        "dataexplorer": {
+            "_name": "Azure Data Explorer",
+            "ww": ["https://dataexplorer.azure.com"]
+        },
+        "synapse": {
+            "_name": "Azure Synapse Analytics",
+            "ww": ["https://web.azuresynapse.net/"]
+        },
+        "myvs": {
+            "_name": "My Visual Studio",
+            "ww": ["https://my.visualstudio.com"]
+        },
+        "learn": {
+            "_name": "Microsoft Learn",
+            "ww": ["https://learn.microsoft.com"]
+        },
+        "lcs": {
+            "_name": "Microsoft Dynamics Lifecycle Services",
+            "ww": ["https://lcs.dynamics.com/v2"]
+        },
+        "azml": {
+            "_name": "Azure Machine Learning Studio",
+            "ww": ["https://ml.azure.com"]
+        },
+        "teams": {
+            "_name": "Microsoft Teams",
+            "ww": ["https://teams.microsoft.com"]
+        },
+        "teamsrooms": {
+            "_name": "Microsoft Teams Rooms Pro Management",
+            "ww": ["https://teams.microsoft.com/rooms"]
+        },
+        "officeconfig": {
+            "_name": "Microsoft Office Configuration",
+            "ww": ["https://config.office.com"]
+        },
+        "azdevops": {
+            "_name": "Azure DevOps Portal",
+            "ww": ["https://dev.azure.com"]
+        },
+        "adf": {
+            "_name": "Azure Data Factory",
+            "ww": ["https://adf.azure.com"]
+        },
+        "azprice": {
+            "_name": "Azure Pricing Calculator",
+            "ww": ["https://azure.microsoft.com/pricing/calculator/"]
+        },
+        "login": {
+            "_name": "Microsoft Login",
+            "ww": ["https://login.microsoftonline.com/{subpage}"],
+            "gcc": ["https://login.microsoftonline.us/{subpage}"],
+            "dod": ["https://login.microsoftonline.us/{subpage}"],
+            "cn": ["https://login.partner.microsoftonline.cn/{subpage}"],
+            "subpage": {
+                "deviceauth": "/common/oauth2/deviceauth",
+                "error": "error"
+            }
+        },
+        "forms": {
+            "_name": "Microsoft Forms",
+            "ww": ["https://forms.cloud.microsoft/"]
+        },
+        "loop": {
+            "_name": "Microsoft Loop",
+            "ww": ["https://loop.cloud.microsoft/"]
+        },
+        "planner": {
+            "_name": "Microsoft Planner",
+            "ww": ["https://planner.cloud.microsoft/"]
+        },
+        "sds": {
+            "_name": "School Data Sync",
+            "ww": ["https://sds.edu.cloud.microsoft/"]
+        },
+        "copilot": {
+            "_name": "Microsoft 365 Copilot",
+            "ww": ["https://copilot.microsoft.com"]
+        },
+        "securitycopilot": {
+            "_name": "Microsoft 365 Security Copilot",
+            "ww": ["https://securitycopilot.microsoft.com"]
+        },
+        "purview": {
+            "_name": "Microsoft Purview",
+            "ww": ["https://purview.microsoft.com"]
+        },
+        "graphexplorer": {
+            "_name": "Microsoft Graph Explorer",
+            "ww": ["https://developer.microsoft.com/en-us/graph/graph-explorer"]
+        },
+        "vivaengage": {
+            "_name": "Microsoft Viva Engage",
+            "ww": ["https://engage.cloud.microsoft/"],
+            "subpage": {
+                "admin": "main/org/common/admin"
+            }
+        },
+        "lighthouse": {
+            "_name": "Microsoft 365 Lighthouse",
+            "ww": ["https://lighthouse.azure.com"]
+        },
+        "azopenai": {
+            "_name": "Azure OpenAI Studio",
+            "ww": ["https://oai.azure.com/portal"]
+        },
+        "azai": {
+            "_name": "Azure AI Foundry",
+            "ww": ["https://ai.azure.com/studio", "https://ai.azure.com/?tid={tenantId}"]
+        },
+        "wwindowsapp": {
+            "_name": "Windows App",
+            "ww": ["https://windows365.microsoft.com"]
+        },
+        "cdx": {
+            "_name": "Customer Digital Experiences",
+            "ww": ["https://cdx.transform.microsoft.com"]
         }
     },
     "alias": {
@@ -79,6 +410,11 @@
         "exo": "exchange",
         "ex": "exchange",
         "team": "teams",
-        "one": "onedrive"
+        "one": "onedrive",
+        "mygroups": "myaccess.groups",
+        "mysecurityinfo": "mysignins.securityinfo",
+        "mysecurity": "mysignins.securityinfo",
+        "mysec": "mysignins.securityinfo",
+        "mysubscriptions": "officePortal.subscriptions"
     }
 }
